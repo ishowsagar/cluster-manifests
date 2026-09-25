@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+# this time kind is 'deployment' -> deploying as deploy manifest into -> replica set -> have no of required pods <- heal if deleted and auto scale based on number of pods listed in the replica-set.
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx-label
+spec:
+  # how many pods you'd want
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-label
+  template:
+    metadata:
+      labels:
+        app: nginx-label
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.14.2
+          ports:
+            - containerPort: 80

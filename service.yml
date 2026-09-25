@@ -1,0 +1,17 @@
+# https://kubernetes.io/docs/concepts/services-networking/service/
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc
+  namespace: default
+spec:
+  selector:
+    app: nginx-label
+  type: ClusterIP
+  ports:
+    - name: nginx-web-server
+      protocol: TCP
+      port: 80
+      targetPort: 80
+
+---

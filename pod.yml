@@ -1,0 +1,19 @@
+# pod is just like service in the docker services -> defining process/service to be created in wrapper (pod).
+apiVersion: v1
+# what are we creating
+kind: Pod
+metadata:
+  # pod name - since kind is 'pod'
+  name: nginx
+spec:
+  containers:
+    # name of the container
+    - name: nginx
+      # image to be run as service in wrapper(pod)
+      # pod is just wrapper for the service to be created in the container.
+      image: nginx:1.14.2
+      ports:
+        - containerPort: 80
+
+# So pod is just wrapper for a service (created from image).
+# All you need to do is create wrapper for a service in kind 'pod'.
